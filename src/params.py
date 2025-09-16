@@ -38,7 +38,7 @@ class Params:
 
     # Git Configuration
     GIT_AUTO_PUSH = True
-    GIT_REPO_URL = 'git@github.com:alireza787b/mavsdk_drone_show.git'
+    GIT_REPO_URL = 'git@github.com:angrsp/mavsdk_drone_show.git'
     GIT_BRANCH = 'main-candidate'  # Git branch is 'main-candidate' for both modes
     
     connectivity_check_ip = "100.96.32.75"  # Default IP to ping eg. 8.8.8.8 for the gcs IP
