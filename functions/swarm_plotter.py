@@ -66,6 +66,8 @@ def plot_single_drone(hw_id, trajectory, plots_dir):
         lons = trajectory['lon'].values
         alts = trajectory['alt'].values
         
+        #TODO fissare estremi degli assi specie sull'asse delle alts
+
         # Plot trajectory path
         ax.plot(lats, lons, alts, linewidth=2, label=f'Drone {hw_id}', alpha=0.8)
         
