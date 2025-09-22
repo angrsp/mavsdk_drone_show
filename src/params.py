@@ -255,6 +255,8 @@ class Params:
     auto_detection_interval = 15  # Interval in seconds
     max_deviation = 1.5 # Maximum allowed deviation in meters for pos_id detection
 
+    LOG_DIRECTORY_PATH="gcs_server/logs"
+
     # =========================
     # SWARM TRAJECTORY CONFIGURATION
     # =========================

@@ -158,7 +158,7 @@ def configure_logging():
     and displayed on the console. It also limits the number of log files.
     """
     # Create logs directory if it doesn't exist
-    logs_directory = os.path.join("..", "logs", "smart_swarm_logs")
+    logs_directory = os.path.join(Params.LOG_DIRECTORY_PATH, "smart_swarm_logs")
     os.makedirs(logs_directory, exist_ok=True)
 
     # Configure the root logger
