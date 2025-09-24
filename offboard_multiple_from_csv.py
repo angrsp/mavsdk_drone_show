@@ -123,7 +123,7 @@ def configure_logging():
         return
 
     # Create logs directory if it doesn't exist
-    logs_directory = os.path.join("logs", "offboard_mission_logs")
+    logs_directory = os.path.join(Params.LOG_DIRECTORY_PATH, "offboard_mission_logs")
     os.makedirs(logs_directory, exist_ok=True)
 
     # Configure the root logger

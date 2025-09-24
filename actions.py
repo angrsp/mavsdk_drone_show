@@ -73,7 +73,7 @@ UDP_PORT = Params.mavsdk_port
 HW_ID = None
 
 # Configure logging
-logs_directory = os.path.join("logs", "action_logs")
+logs_directory = os.path.join(Params.LOG_DIRECTORY_PATH, "action_logs")
 os.makedirs(logs_directory, exist_ok=True)
 
 logger = logging.getLogger("action_logger")
