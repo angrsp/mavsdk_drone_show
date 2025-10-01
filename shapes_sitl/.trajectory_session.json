@@ -3,7 +3,8 @@
   "timestamp": "2025-09-24T12:13:38.570410",
   "swarm_fingerprint": "50b822e9db0076277d8f8d2157478efe",
   "processed_leaders": [
-    1
+    1,
+    4
   ],
   "total_drones": 1,
   "parameters_hash": "5d3283303a32264a0740e7a155940824"

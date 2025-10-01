@@ -37,6 +37,26 @@ class Params:
     swarm_url = 'https://nb1.joomtalk.ir/download/swarm.csv'    # URL for the swarm file
 
     # Git Configuration
+    # ===================================================================================
+    # REPOSITORY CONFIGURATION: Environment Variable Support (MDS v3.1+)
+    # ===================================================================================
+    # These settings now support environment variable override for advanced deployments
+    # while maintaining 100% backward compatibility for normal users.
+    #
+    # FOR NORMAL USERS (99%):
+    #   - No action required - defaults work identically to previous versions
+    #   - Uses: git@github.com:alireza787b/mavsdk_drone_show.git@main-candidate
+    #
+    # FOR ADVANCED USERS (Custom Forks):
+    #   - Set environment variables before running any MDS scripts:
+    #     export MDS_REPO_URL="git@github.com:yourcompany/your-fork.git"
+    #     export MDS_BRANCH="your-production-branch"
+    #   - All Python components (GCS server, functions, etc.) automatically use your config
+    #
+    # ENVIRONMENT VARIABLES:
+    #   MDS_REPO_URL  - Git repository URL (SSH or HTTPS)
+    #   MDS_BRANCH    - Git branch name
+    # ===================================================================================
     GIT_AUTO_PUSH = True
     GIT_REPO_URL = 'git@github.com:angrsp/mavsdk_drone_show.git'
     GIT_BRANCH = 'main-candidate'  # Git branch is 'main-candidate' for both modes
@@ -143,7 +163,7 @@ class Params:
     extra_devices = [
         f"127.0.0.1:{local_mavlink_port}",
         f"127.0.0.1:{local_mavlink2rest_port}",
-        "100.74.49.250:14550",
+        "100.96.64.247:14550", # GCS PC
     ]  # Extra devices for MAVLink routing
 
     hard_reboot_command_enabled = True  # Allow hard reboot commands (ensure root privileges)
@@ -233,9 +253,9 @@ class Params:
     INITIAL_CLIMB_ALTITUDE_THRESHOLD = 5.0  # Altitude threshold for initial climb phase
     INITIAL_CLIMB_TIME_THRESHOLD = 5.0      # Time threshold for initial climb phase
     INITIAL_CLIMB_VZ_DEFAULT = 1.0  # m/s
-    
+
     # Possible values: "BODY_VELOCITY" or "LOCAL_NED"
-    INITIAL_CLIMB_MODE = "BODY_VELOCITY"  
+    INITIAL_CLIMB_MODE = "BODY_VELOCITY"
 
     # Feedforward Control Settings
     FEEDFORWARD_VELOCITY_ENABLED = False        # Enable feedforward velocity setpoints
@@ -326,6 +346,16 @@ class Params:
     
     # React UI Integration
     swarm_trajectory_executer = "swarm_trajectory_mission.py"  # Script name for UI
+
+    # =========================
+    # SWARM TRAJECTORY INITIAL CLIMB CONFIGURATION
+    # =========================
+
+    # Dedicated climb phase parameters for swarm trajectory mode multicopter synchronization
+    # These handle the gap between t=0 and first CSV waypoint time in swarm trajectory missions
+    SWARM_TRAJECTORY_INITIAL_CLIMB_HEIGHT = 5.0    # meters above first setpoint altitude
+    SWARM_TRAJECTORY_INITIAL_CLIMB_TIME = 5.0      # seconds for climb phase duration
+    SWARM_TRAJECTORY_INITIAL_CLIMB_SPEED = 1.0     # m/s vertical climb speed (positive = up)
 
     @classmethod
     def get_swarm_trajectory_file_path(cls, position_id):

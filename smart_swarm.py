@@ -109,6 +109,8 @@ from smart_swarm_src.utils import (
     lla_to_ned
 )
 
+from drone_show_src.utils import configure_logging
+
 # ----------------------------- #
 #        Data Structures        #
 # ----------------------------- #
@@ -1274,7 +1276,7 @@ def main():
     Main function to run the smart swarm mode.
     """
     # Configure logging
-    configure_logging()
+    configure_logging("smart_swarm")
 
     # Parse command-line arguments if needed
     parser = argparse.ArgumentParser(description='Smart Swarm Mode')
