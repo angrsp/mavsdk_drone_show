@@ -7,7 +7,9 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    overflow: hidden;
+    overflow: visible;
+    position: relative;
+    /* z-index: 1; */
 }
 
 .drone-card:hover {
@@ -100,4 +102,20 @@
 
 .form-group select, .form-group input {
     flex: 2;
+}
+
+.drone-card.selected-drone {
+    /* z-index: 10; */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border: 2px solid #2196f3;
+}
+
+.expanded-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.drone-card.selected-drone .expanded-content {
+    max-height: 600px;
 }

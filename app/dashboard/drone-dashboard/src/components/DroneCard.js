@@ -81,8 +81,9 @@ const DroneCard = ({ drone, allDrones, onSaveChanges, isSelected }) => {
             <p className="collapsible-details">
                 Position Offset (m): {offsetNLabel.split(' ')[1]}: {drone.offset_n}, {offsetELabel.split(' ')[1]}: {drone.offset_e}, Altitude: {drone.offset_alt}
             </p>
-
-            {isExpanded && (
+            
+            <div className="expanded-content">
+                {isExpanded && (
                 <div>
                     <div className="form-group">
                         <label>Role: </label>
@@ -140,6 +141,8 @@ const DroneCard = ({ drone, allDrones, onSaveChanges, isSelected }) => {
                     <button onClick={handleSave}>Save Changes</button>
                 </div>
             )}
+            </div>
+            
         </div>
     );
 };
