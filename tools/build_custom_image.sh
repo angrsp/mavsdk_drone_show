@@ -45,7 +45,7 @@ SCRIPT_VERSION="1.0.0"
 DEFAULT_REPO_URL="${MDS_REPO_URL:-git@github.com:alireza787b/mavsdk_drone_show.git}"
 DEFAULT_BRANCH="${MDS_BRANCH:-main-candidate}"
 DEFAULT_IMAGE_NAME="${MDS_DOCKER_IMAGE:-drone-template:custom}"
-BASE_IMAGE="drone-template:latest"
+BASE_IMAGE="drone-template:v3.0"
 
 # =============================================================================
 # HELPER FUNCTIONS
