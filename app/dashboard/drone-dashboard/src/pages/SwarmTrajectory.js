@@ -19,6 +19,7 @@ const SwarmTrajectory = () => {
   const [kmlProgress, setKmlProgress] = useState(null);
   const [recommendation, setRecommendation] = useState(null);
   const [clearingData, setClearingData] = useState(false);
+  const [plotTimestamp, setPlotTimestamp] = useState(Date.now());
 
   useEffect(() => {
     initializeComponent();
@@ -160,6 +161,8 @@ const SwarmTrajectory = () => {
       setResults(result);
       await fetchStatus();
       await fetchRecommendation(); // Update recommendation after processing
+
+      setPlotTimestamp(Date.now());
 
       if (result.success) {
         let message = `✅ Processing complete! ${result.processed_drones} drones processed successfully.`;
@@ -806,9 +809,9 @@ const SwarmTrajectory = () => {
                                     </button>
                                   </div>
                                 </div>
-                                <div className="cluster-plot clickable" onClick={() => openLightbox(`${getBackendURL()}/static/plots/cluster_leader_${leaderId}.jpg`, `Cluster ${leaderId} Formation`)}>
+                                <div className="cluster-plot clickable" onClick={() => openLightbox(`${getBackendURL()}/static/plots/cluster_leader_${leaderId}.jpg?t=${plotTimestamp}`, `Cluster ${leaderId} Formation`)}>
                                   <img 
-                                    src={`${getBackendURL()}/static/plots/cluster_leader_${leaderId}.jpg`}
+                                    src={`${getBackendURL()}/static/plots/cluster_leader_${leaderId}.jpg?t=${plotTimestamp}`}
                                     alt={`Cluster ${leaderId} formation trajectories`}
                                     onError={(e) => {
                                       e.target.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="100%" height="100%" fill="%23f8fafc"/><text x="50%" y="50%" font-family="Arial" font-size="16" fill="%23667eea" text-anchor="middle">Cluster Formation Plot</text></svg>';
@@ -856,9 +859,9 @@ const SwarmTrajectory = () => {
                                     </div>
                                   </div>
                                   
-                                  <div className="preview-plot clickable" onClick={() => openLightbox(`${getBackendURL()}/static/plots/drone_${leaderId}_trajectory.jpg`, `Drone ${leaderId} Trajectory`)}>
+                                  <div className="preview-plot clickable" onClick={() => openLightbox(`${getBackendURL()}/static/plots/drone_${leaderId}_trajectory.jpg?t=${plotTimestamp}`, `Drone ${leaderId} Trajectory`)}>
                                     <img 
-                                      src={`${getBackendURL()}/static/plots/drone_${leaderId}_trajectory.jpg`}
+                                      src={`${getBackendURL()}/static/plots/drone_${leaderId}_trajectory.jpg?t=${plotTimestamp}`}
                                       alt={`Drone ${leaderId} trajectory`}
                                       onError={(e) => {
                                         e.target.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="150"><rect width="100%" height="100%" fill="%23f0f0f0"/><text x="50%" y="50%" font-family="Arial" font-size="14" fill="%23666" text-anchor="middle">Plot Loading...</text></svg>';
@@ -914,9 +917,9 @@ const SwarmTrajectory = () => {
                                       </div>
                                     </div>
                                     
-                                    <div className="preview-plot clickable" onClick={() => openLightbox(`${getBackendURL()}/static/plots/drone_${followerId}_trajectory.jpg`, `Drone ${followerId} Trajectory`)}>
+                                    <div className="preview-plot clickable" onClick={() => openLightbox(`${getBackendURL()}/static/plots/drone_${followerId}_trajectory.jpg?t=${plotTimestamp}`, `Drone ${followerId} Trajectory`)}>
                                       <img 
-                                        src={`${getBackendURL()}/static/plots/drone_${followerId}_trajectory.jpg`}
+                                        src={`${getBackendURL()}/static/plots/drone_${followerId}_trajectory.jpg?t=${plotTimestamp}`}
                                         alt={`Drone ${followerId} trajectory`}
                                         onError={(e) => {
                                           e.target.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="150"><rect width="100%" height="100%" fill="%23f7fafc"/><text x="50%" y="50%" font-family="Arial" font-size="14" fill="%2338a169" text-anchor="middle">Follower Plot</text></svg>';
